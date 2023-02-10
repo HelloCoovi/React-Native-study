@@ -1,15 +1,26 @@
+import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
+  const [enteredGoalText, setEnteredGoalText] = useState("");
+
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText(enteredText);
+  }
+  function addGoalHandler() {
+    console.log(enteredGoalText);
+  }
+
   return (
     <View style={styles.appContainer}>
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.textInput}
+          onChangeText={goalInputHandler}
           placeholder="이곳에 나의 목표를 적으세요!"
         />
-        <Button title="목표 만들기" />
+        <Button onPress={addGoalHandler} title="목표 만들기" />
       </View>
       <View style={styles.goalsContainer}>
         <Text>나의 목표들...</Text>
