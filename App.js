@@ -3,13 +3,16 @@ import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
+  const [courseGoals, setCourseGoals] = useState([]);
   const [enteredGoalText, setEnteredGoalText] = useState("");
 
   function goalInputHandler(enteredText) {
     setEnteredGoalText(enteredText);
   }
   function addGoalHandler() {
-    console.log(enteredGoalText);
+    setCourseGoals((currentCourseGoals) => {
+      return [...currentCourseGoals, enteredGoalText];
+    });
   }
 
   return (
@@ -23,7 +26,9 @@ export default function App() {
         <Button onPress={addGoalHandler} title="목표 만들기" />
       </View>
       <View style={styles.goalsContainer}>
-        <Text>나의 목표들...</Text>
+        {courseGoals.map((goals, i) => {
+          return <Text key={i}>{goals}</Text>;
+        })}
       </View>
     </View>
   );
@@ -52,6 +57,6 @@ const styles = StyleSheet.create({
     padding: 8,
   },
   goalsContainer: {
-    flex: 4,
+    flex: 5,
   },
 });
