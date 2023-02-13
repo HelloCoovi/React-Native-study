@@ -10,15 +10,12 @@ import {
 } from "react-native";
 
 import GoalItem from "./component/GoalItem";
+import GoalInput from "./component/GoalInput";
 
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([]);
-  const [enteredGoalText, setEnteredGoalText] = useState("");
 
-  function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
-  }
-  function addGoalHandler() {
+  function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => {
       return [
         ...currentCourseGoals,
@@ -29,14 +26,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={goalInputHandler}
-          placeholder="이곳에 나의 목표를 적으세요!"
-        />
-        <Button onPress={addGoalHandler} title="목표 만들기" />
-      </View>
+      <GoalInput onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
@@ -58,22 +48,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     flex: 1,
   },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: "#cccccc",
-    width: "70%",
-    marginRight: 8,
-    padding: 8,
-  },
+
   goalsContainer: {
     flex: 5,
   },
