@@ -34,10 +34,14 @@ function GoalInput(props) {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button onPress={addGoalHandler} title="목표 만들기" />
+            <Button
+              onPress={addGoalHandler}
+              title="목표 만들기"
+              color="#b180f0"
+            />
           </View>
           <View style={styles.button}>
-            <Button onPress={props.onCancel} title="취소하기" />
+            <Button onPress={props.onCancel} title="취소하기" color="#f31282" />
           </View>
         </View>
       </View>
@@ -48,9 +52,12 @@ function GoalInput(props) {
 const styles = StyleSheet.create({
   textInput: {
     borderWidth: 1,
-    borderColor: "#cccccc",
+    borderColor: "#e4d0ff",
+    backgroundColor: "#e4d0ff",
+    borderRadius: 6,
+    color: "#120438",
     width: "100%",
-    padding: 8,
+    padding: 16,
   },
   inputContainer: {
     flex: 1,
