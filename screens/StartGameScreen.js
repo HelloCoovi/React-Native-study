@@ -1,10 +1,15 @@
 import { View, TextInput } from "react-native";
 
+import PrimaryButton from "../components/PrimaryButton";
+
 function StartGameScreen() {
   return (
     <View>
       <TextInput />
-      {/* 버튼을 추가할 자리 */}
+      <PrimaryButton>Rest</PrimaryButton>
+      <PrimaryButton>Confirm</PrimaryButton>
     </View>
   );
 }
+
+export default StartGameScreen;
