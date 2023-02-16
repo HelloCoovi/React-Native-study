@@ -10,8 +10,13 @@ function StartGameScreen() {
     setEnteredNumber(enteredText);
   }
   function confirmInputHandler() {
-    // 검증을 위한 코드 예정
-    console.log("Confirm!");
+    const chosenNumber = parseInt(enteredNumber);
+
+    if (isNaN(chosenNumber) || chosenNumber < 0 || chosenNumber > 99) {
+      console.log("경고! 유효하지 않은 숫자입니다!");
+      return;
+    }
+    console.log("유효한 숫자입니다");
   }
 
   return (
