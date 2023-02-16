@@ -8,7 +8,7 @@ export default function App() {
   return (
     <LinearGradient colors={["#4e0329", "#ddb52f"]} style={styles.rootScreen}>
       <ImageBackground
-        source={require("./assets/images/background.png")}
+        source={require("./assets/images/background_resizing.png")}
         resizeMode="cover"
         style={styles.rootScreen}
         imageStyle={styles.backgroundImage}
@@ -24,6 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   backgroundImage: {
-    opacity: "0.15",
+    opacity: 0.15,
   },
 });
