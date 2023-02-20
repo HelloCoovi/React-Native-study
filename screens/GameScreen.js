@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Alert } from "react-native";
 
 import Title from "../components/ui/Title";
+import PrimaryButton from "../components/ui/PrimaryButton";
 import NumberContainer from "../components/game/NumberContainer";
 
 function generateRandomBetween(min, max, exclude) {
@@ -14,17 +15,56 @@ function generateRandomBetween(min, max, exclude) {
   }
 }
 
+let minBoundary = 1;
+let maxBoundary = 100;
+
 function GameScreen({ userNumber }) {
-  const initialGuess = generateRandomBetween(1, 100, userNumber);
+  const initialGuess = generateRandomBetween(
+    minBoundary,
+    maxBoundary,
+    userNumber
+  );
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
+
+  function nextGuessHandler(direction) {
+    if (
+      (direction === "lower" && currentGuess < userNumber) ||
+      (direction === "greater" && currentGuess > userNumber)
+    ) {
+      Alert.alert(
+        "잘못된 입력입니다!",
+        "프로그램에게 잘못된 정보를 주셨습니다.",
+        [{ text: "알겠습니다", style: "cancel" }]
+      );
+      return;
+    }
+
+    if (direction === "lower") {
+      maxBoundary = currentGuess;
+    } else if (direction === "greater") {
+      minBoundary = currentGuess + 1;
+    }
+    const newRndNum = generateRandomBetween(
+      minBoundary,
+      maxBoundary,
+      currentGuess
+    );
+    setCurrentGuess(newRndNum);
+  }
 
   return (
     <View style={styles.screen}>
       <Title>상대방의 예상값</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Text>높나요? 낮나요?</Text>
-      {/* + 버튼 */}
-      {/* - 버튼 */}
+      <View>
+        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+          +
+        </PrimaryButton>
+        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+          -
+        </PrimaryButton>
+      </View>
       {/*  라운드 수 */}
     </View>
   );
