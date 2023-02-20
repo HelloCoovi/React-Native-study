@@ -4,6 +4,8 @@ import { Text, View, StyleSheet, Alert } from "react-native";
 import Title from "../components/ui/Title";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import NumberContainer from "../components/game/NumberContainer";
+import Card from "../components/ui/Card";
+import InstructionText from "../components/ui/InstructionText";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -56,18 +58,24 @@ function GameScreen({ userNumber, onGameOver }) {
 
   return (
     <View style={styles.screen}>
-      <Title>상대방의 예상값</Title>
+      <Title>프로그램이 예상한 답</Title>
       <NumberContainer>{currentGuess}</NumberContainer>
-      <Text>높나요? 낮나요?</Text>
-      <View>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
-          +
-        </PrimaryButton>
-        <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
-          -
-        </PrimaryButton>
-      </View>
-      {/*  라운드 수 */}
+      <Card>
+        <InstructionText>높나요? 낮나요?</InstructionText>
+        <View style={styles.buttonsContainer}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              +
+            </PrimaryButton>
+          </View>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              -
+            </PrimaryButton>
+          </View>
+        </View>
+        {/*  라운드 수 */}
+      </Card>
     </View>
   );
 }
@@ -76,6 +84,12 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
+  },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+  buttonContainer: {
+    flex: 1,
   },
 });
 
