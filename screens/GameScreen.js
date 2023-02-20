@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Text, View, StyleSheet } from "react-native";
-import Title from "../components/game/ui/Title";
+
+import Title from "../components/ui/Title";
+import NumberContainer from "../components/game/NumberContainer";
 
 function generateRandomBetween(min, max, exclude) {
   const rndNum = Math.floor(Math.random() * (max - min)) + min;
@@ -15,12 +17,11 @@ function generateRandomBetween(min, max, exclude) {
 function GameScreen({ userNumber }) {
   const initialGuess = generateRandomBetween(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
-  console.log(`선택된 숫자는 ${initialGuess}`);
 
   return (
     <View style={styles.screen}>
       <Title>상대방의 예상값</Title>
-      {/* 예상값 */}
+      <NumberContainer>{currentGuess}</NumberContainer>
       <Text>높나요? 낮나요?</Text>
       {/* + 버튼 */}
       {/* - 버튼 */}
