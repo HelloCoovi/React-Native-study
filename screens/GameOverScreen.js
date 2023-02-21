@@ -13,8 +13,10 @@ function GameOverScreen() {
           source={require("../assets/images/success.png")}
         />
       </View>
-      <Text>
-        당신의 휴대폰은 숫자 X를 예측하기위해 Y 라운드가 필요했습니다.
+      <Text style={styles.summaryText}>
+        당신의 휴대폰은 숫자 <Text style={styles.highlight}>X</Text>를
+        예측하기위해 <Text style={styles.highlight}>Y</Text> 라운드가
+        필요했습니다.
       </Text>
     </View>
   );
@@ -41,5 +43,14 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%",
+  },
+  summaryText: {
+    fontFamily: "open-sans",
+    fontSize: 24,
+    textAlign: "center",
+  },
+  highlight: {
+    fontFamily: "open-sans-bold",
+    color: Colors.primary500,
   },
 });
