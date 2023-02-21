@@ -1,4 +1,5 @@
 import { View, Text, StyleSheet, Image } from "react-native";
+import PrimaryButton from "../components/ui/PrimaryButton";
 
 import Title from "../components/ui/Title";
 import Colors from "../constants/colors";
@@ -18,6 +19,7 @@ function GameOverScreen() {
         예측하기위해 <Text style={styles.highlight}>Y</Text> 라운드가
         필요했습니다.
       </Text>
+      <PrimaryButton>새로운 게임 시작하기</PrimaryButton>
     </View>
   );
 }
@@ -48,6 +50,7 @@ const styles = StyleSheet.create({
     fontFamily: "open-sans",
     fontSize: 24,
     textAlign: "center",
+    marginBottom: 24,
   },
   highlight: {
     fontFamily: "open-sans-bold",
