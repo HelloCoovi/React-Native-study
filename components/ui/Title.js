@@ -16,6 +16,8 @@ const styles = StyleSheet.create({
     padding: 12,
     borderWidth: 2,
     borderColor: "white",
+    width: 300,
+    maxWidth: "80%",
   },
 });
 
