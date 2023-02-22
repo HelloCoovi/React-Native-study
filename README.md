@@ -71,3 +71,19 @@ useEffect(() => {
   - 많은 것이 이미 포함되어있지만 어떤 라이브러리는 설치해야한다.
 
 ---
+
+### **반응형 UI 코드 작성하기**
+
+- `Dimensions`를 사용한 기기의 screen 크기 확인
+- `useWindowDimensions`를 사용한 동적 screen 크기 인식
+- `Platform` 컴포넌트를 사용한 OS 별 코드 작성
+
+  - `Platform.OS`를 사용해 현재 실행되는 기기의 OS를 파악해서 if로 분기하거나 삼항연산자로 UI 코드를 작성
+  - `Platform.select`를 사용해 OS 별 다른 코드 적용
+
+  ```javascript
+  borderWidth: Platform.OS === "android" ? 2 : 0,
+  borderWidth: Platform.select({ ios: 0, android: 2 }),
+  ```
+
+- 컴포넌트의 파일 이름 자체를 수정해서 OS별 다른 컴포넌트 적용하기
