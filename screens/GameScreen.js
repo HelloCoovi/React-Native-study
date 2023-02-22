@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Alert, FlatList } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Alert,
+  FlatList,
+  useWindowDimensions,
+} from "react-native";
 
 import { Ionicons } from "@expo/vector-icons";
 
@@ -70,9 +77,10 @@ function GameScreen({ userNumber, onGameOver }) {
 
   const guessRoundsListLength = guessRounds.length;
 
-  return (
-    <View style={styles.screen}>
-      <Title>프로그램이 예상한 답</Title>
+  const { width, height } = useWindowDimensions();
+
+  let content = (
+    <>
       <NumberContainer>{currentGuess}</NumberContainer>
       <Card>
         <InstructionText style={styles.InstructionText}>
@@ -91,6 +99,33 @@ function GameScreen({ userNumber, onGameOver }) {
           </View>
         </View>
       </Card>
+    </>
+  );
+
+  if (width > 500) {
+    content = (
+      <>
+        <View style={styles.buttonsContainerWide}>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "greater")}>
+              <Ionicons name="md-add" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+          <NumberContainer>{currentGuess}</NumberContainer>
+          <View style={styles.buttonContainer}>
+            <PrimaryButton onPress={nextGuessHandler.bind(this, "lower")}>
+              <Ionicons name="md-remove" size={24} color="white" />
+            </PrimaryButton>
+          </View>
+        </View>
+      </>
+    );
+  }
+
+  return (
+    <View style={styles.screen}>
+      <Title>프로그램이 예상한 답</Title>
+      {content}
       <View style={styles.listContainer}>
         {/* {guessRounds.map((guessRound) => {
           console.log(guessRounds);
@@ -128,6 +163,11 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     flex: 1,
+  },
+
+  buttonsContainerWide: {
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 
