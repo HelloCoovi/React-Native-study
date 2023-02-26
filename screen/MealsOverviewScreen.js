@@ -8,7 +8,14 @@ function MealsOverviewScreen({ route }) {
   const catId = route.params.categoryId;
 
   function renderMealItem(itemData) {
-    return <MealItem title={itemData.item.title} />;
+    const mealItemProps = {
+      title: itemData.item.title,
+      imageUrl: itemData.item.imageUrl,
+      duration: itemData.item.duration,
+      complexity: itemData.item.complexity,
+      affordability: itemData.item.affordability,
+    };
+    return <MealItem {...mealItemProps} />;
   }
 
   const displayedMeals = MEALS.filter((mealItem) => {
