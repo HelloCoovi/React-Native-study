@@ -10,6 +10,7 @@ import {
 import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
+import IconButton from "../components/IconButton";
 import { MEALS } from "../data/dummy-data";
 
 import { useLayoutEffect } from "react";
@@ -25,7 +26,7 @@ function MealDetailScreen({ route, navigation }) {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
-        return <Button title="Tap me!" onPress={headerButtonPressHandler} />;
+        return <IconButton onPress={headerButtonPressHandler} />;
       },
     });
   }, [navigation, headerButtonPressHandler]);
