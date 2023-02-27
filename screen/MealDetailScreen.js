@@ -1,6 +1,8 @@
 import { View, Text, Image, StyleSheet } from "react-native";
 
 import MealDetails from "../components/MealDetails";
+import Subtitle from "../components/MealDetail/Subtitle";
+import List from "../components/MealDetail/List";
 import { MEALS } from "../data/dummy-data";
 
 function MealDetailScreen({ route }) {
@@ -10,24 +12,21 @@ function MealDetailScreen({ route }) {
   return (
     <View>
       <Image style={styles.image} source={{ uri: selectMeal.imageUrl }} />
-      <Text>{selectMeal.title}</Text>
+      <Text style={styles.title}>{selectMeal.title}</Text>
       <MealDetails
         duration={selectMeal.duration}
         complexity={selectMeal.complexity}
         affordability={selectMeal.affordability}
+        textStyle={styles.detailText}
       />
-      <Text>ingredients</Text>
-      {selectMeal.ingredients.map((ingredient, i) => {
-        return <Text key={i}>- {ingredient}</Text>;
-      })}
-      <Text>Step</Text>
-      {selectMeal.steps.map((step, i) => {
-        return (
-          <Text key={i}>
-            {i + 1}. {step}
-          </Text>
-        );
-      })}
+      <View style={styles.listOuterContainer}>
+        <View style={styles.listContainer}>
+          <Subtitle>ingredients</Subtitle>
+          <List data={selectMeal.ingredients} />
+          <Subtitle>Step</Subtitle>
+          <List data={selectMeal.steps} />
+        </View>
+      </View>
     </View>
   );
 }
@@ -35,8 +34,24 @@ function MealDetailScreen({ route }) {
 export default MealDetailScreen;
 
 const styles = StyleSheet.create({
+  listOuterContainer: {
+    alignItems: "center",
+  },
+  listContainer: {
+    width: "80%",
+  },
   image: {
-    width: 100,
-    height: 100,
+    width: "100%",
+    height: 300,
+  },
+  title: {
+    fontWeight: "bold",
+    fontSize: 24,
+    margin: 8,
+    textAlign: "center",
+    color: "white",
+  },
+  detailText: {
+    color: "white",
   },
 });
