@@ -24,8 +24,12 @@ function MealDetailScreen({ route, navigation }) {
 
   const mealIsFavorite = favoriteMealsCtx.ids.includes(mealId);
 
-  function headerButtonPressHandler() {
-    console.log("Pressed!");
+  function changeFavoriteStatusHandler() {
+    if (mealIsFavorite) {
+      favoriteMealsCtx.removeFavorite(mealId);
+    } else {
+      favoriteMealsCtx.addFavorite(mealId);
+    }
   }
 
   useLayoutEffect(() => {
@@ -35,12 +39,12 @@ function MealDetailScreen({ route, navigation }) {
           <IconButton
             icon={mealIsFavorite ? "star" : "star-outline"}
             color="white"
-            onPress={headerButtonPressHandler}
+            onPress={changeFavoriteStatusHandler}
           />
         );
       },
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, changeFavoriteStatusHandler]);
 
   return (
     <ScrollView style={styles.rootContainer}>
