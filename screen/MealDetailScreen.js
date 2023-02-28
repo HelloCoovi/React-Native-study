@@ -11,11 +11,14 @@ import MealDetails from "../components/MealDetails";
 import Subtitle from "../components/MealDetail/Subtitle";
 import List from "../components/MealDetail/List";
 import IconButton from "../components/IconButton";
+import { FavoritesContext } from "../store/context/favorites-context";
 import { MEALS } from "../data/dummy-data";
 
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 
 function MealDetailScreen({ route, navigation }) {
+  const favoriteMealsCtx = useContext(FavoritesContext);
+
   const mealId = route.params.id;
   const selectMeal = MEALS.find((meal) => meal.id === mealId);
 
