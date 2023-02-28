@@ -14,7 +14,13 @@ const Drawer = createDrawerNavigator();
 
 function DrawerNavigator() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator
+      screenOptions={{
+        headerStyle: { backgroundColor: "#351401" },
+        headerTintColor: "white",
+        sceneContainerStyle: { backgroundColor: "#3f2f25" },
+      }}
+    >
       <Drawer.Screen name="Categories" component={CategoriesScreen} />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} />
     </Drawer.Navigator>
