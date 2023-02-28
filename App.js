@@ -37,7 +37,7 @@ export default function App() {
             name="Drawer"
             component={DrawerNavigator}
             options={{
-              title: "All Categories",
+              headerShown: false,
             }}
           />
           <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
