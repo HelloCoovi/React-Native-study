@@ -5,11 +5,15 @@ function ExpensesItem({ description, date, amount }) {
   return (
     <Pressable>
       <View style={styles.expenseItem}>
-        <Text style={[styles.description, styles.textBase]}>{description}</Text>
-        <Text style={styles.textBase}>{date.toString()}</Text>
-      </View>
-      <View style={styles.amountContainer}>
-        <Text style={styles.amount}>{amount}</Text>
+        <View>
+          <Text style={[styles.textBase, styles.description]}>
+            {description}
+          </Text>
+          <Text style={styles.textBase}>{date.toString()}</Text>
+        </View>
+        <View style={styles.amountContainer}>
+          <Text style={styles.amount}>{amount}</Text>
+        </View>
       </View>
     </Pressable>
   );
@@ -42,8 +46,9 @@ const styles = StyleSheet.create({
   amountContainer: {
     paddingHorizontal: 12,
     paddingVertical: 4,
-    backgroundColor: "center",
+    backgroundColor: "white",
     justifyContent: "center",
+    alignItems: "center",
     borderRadius: 4,
   },
   amount: {
