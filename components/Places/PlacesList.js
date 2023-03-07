@@ -1,11 +1,13 @@
-import { FlatList, View, StyleSheet } from "react-native";
+import { FlatList, View, Text, StyleSheet } from "react-native";
 import PlaceItem from "./PlaceItem";
 
 function PlacesList({ places }) {
   if (!places || places.length === 0) {
     return (
-      <View>
-        <Text>아직 추가하신 장소가 없네요 - 장소를 추가해보세요!</Text>
+      <View style={styles.fallbackContainer}>
+        <Text style={styles.fallbackText}>
+          아직 추가하신 장소가 없네요 - 장소를 추가해보세요!
+        </Text>
       </View>
     );
   }
