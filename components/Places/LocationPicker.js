@@ -53,7 +53,7 @@ function LocationPicker() {
 
   function pickOnMapHandler() {}
 
-  let locationPreview = <Text>No location picked yet.</Text>;
+  let locationPreview = <Text>정보데이터가 불러와지지 않았습니다.</Text>;
 
   if (pickedLocation) {
     locationPreview = (
@@ -72,10 +72,10 @@ function LocationPicker() {
       <View style={styles.mapPreview}>{locationPreview}</View>
       <View style={styles.actions}>
         <OutlinedButton icon="location" onPress={getLocationHandler}>
-          Locate User
+          사용자 위치
         </OutlinedButton>
         <OutlinedButton icon="map" onPress={pickOnMapHandler}>
-          Pick on Map
+          장소 설정하기
         </OutlinedButton>
       </View>
     </View>
