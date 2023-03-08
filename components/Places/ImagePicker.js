@@ -6,6 +6,7 @@ import {
 } from "expo-image-picker";
 import { useState } from "react";
 import { Colors } from "../../constants/colors";
+import OutlinedButton from "../UI/OutlinedButton";
 
 function ImagePicker() {
   const [pickedImage, setPickedImage] = useState();
@@ -42,20 +43,28 @@ function ImagePicker() {
       aspect: [16, 9],
       quality: 0.5,
     });
-
-    setPickedImage(image.uri);
+    // expo-image-picker 사용법 변화로 코드 변경
+    // setPickedImage(image);
+    console.log(image.assets);
+    setPickedImage(image.assets);
   }
 
   let imagePreview = <Text>사진을 촬영해주세요!</Text>;
 
   if (pickedImage) {
-    imagePreview = <Image style={styles.image} source={{ uri: pickedImage }} />;
+    imagePreview = (
+      // expo-image-picker 사용법 변화로 코드 변경
+      // <Image style={styles.image} source={{ uri: pickedImage.uri }} />
+      <Image style={styles.image} source={{ uri: pickedImage[0].uri }} />
+    );
   }
 
   return (
     <View>
       <View style={styles.imagePreview}>{imagePreview}</View>
-      <Button title="Take Image" onPress={takeImageHandler} />
+      <OutlinedButton icon="camera" onPress={takeImageHandler}>
+        사진 촬영하기
+      </OutlinedButton>
     </View>
   );
 }
