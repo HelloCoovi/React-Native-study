@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Colors } from "../../constants/colors";
 import OutlinedButton from "../UI/OutlinedButton";
 
-function ImagePicker() {
+function ImagePicker({ onTakeImage }) {
   const [pickedImage, setPickedImage] = useState();
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
@@ -46,7 +46,9 @@ function ImagePicker() {
     // expo-image-picker 사용법 변화로 코드 변경
     // setPickedImage(image);
     console.log(image.assets);
-    setPickedImage(image.assets);
+    setPickedImage(image.assets[0].uri);
+
+    onTakeImage(image.assets[0].uri);
   }
 
   let imagePreview = <Text>사진을 촬영해주세요!</Text>;
@@ -55,7 +57,7 @@ function ImagePicker() {
     imagePreview = (
       // expo-image-picker 사용법 변화로 코드 변경
       // <Image style={styles.image} source={{ uri: pickedImage.uri }} />
-      <Image style={styles.image} source={{ uri: pickedImage[0].uri }} />
+      <Image style={styles.image} source={{ uri: pickedImage }} />
     );
   }
 
