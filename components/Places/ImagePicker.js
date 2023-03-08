@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Colors.primary700,
+    backgroundColor: Colors.primary100,
     borderRadius: 4,
   },
   image: {
