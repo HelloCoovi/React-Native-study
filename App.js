@@ -10,6 +10,7 @@ import Map from "./screen/Map";
 import { Colors } from "./constants/colors";
 import { init } from "./util/database";
 import * as SplashScreen from "expo-splash-screen";
+import PlaceDetails from "./screen/PlaceDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -67,6 +68,7 @@ export default function App() {
               title: "새로운 장소 추가하기",
             }}
           />
+          <Stack.Screen name="PlaceDetails" component={PlaceDetails} />
           <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
       </NavigationContainer>
