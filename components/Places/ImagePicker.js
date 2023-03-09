@@ -45,7 +45,7 @@ function ImagePicker({ onTakeImage }) {
     });
     // expo-image-picker 사용법 변화로 코드 변경
     // setPickedImage(image);
-    console.log(image.assets);
+    // console.log(image.assets);
     setPickedImage(image.assets[0].uri);
 
     onTakeImage(image.assets[0].uri);
