@@ -14,13 +14,11 @@ function PlacesList({ places }) {
   }
 
   return (
-    <View>
-      <FlatList
-        data={places}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <PlaceItem place={item} />}
-      />
-    </View>
+    <FlatList
+      data={places}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => <PlaceItem place={item} />}
+    />
   );
 }
 
