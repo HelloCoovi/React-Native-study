@@ -7,7 +7,12 @@ import { fetchPlaceDetails } from "../util/database";
 function PlaceDetails({ navigation, route }) {
   const [fetchedPlace, setFetchedPlace] = useState();
 
-  function shawOnMapHandler() {}
+  function shawOnMapHandler() {
+    navigation.navigate("Map", {
+      initialLat: fetchedPlace.location.lat,
+      initialLng: fetchedPlace.location.lng,
+    });
+  }
 
   const selectedPlaceId = route.params.placeId;
   useEffect(() => {
