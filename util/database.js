@@ -63,7 +63,7 @@ export function fetchPlaces() {
         [],
         (_, result) => {
           // console.log(result);
-          console.log(JSON.stringify(result, null, 2));
+          // console.log(JSON.stringify(result, null, 2));
 
           const places = [];
           for (const dp of result.rows._array) {
@@ -99,7 +99,19 @@ export function fetchPlaceDetails(id) {
         [id],
         (_, result) => {
           // console.log(result);
-          resolve(result.rows._array[0]);
+          // console.log(result.rows._array[0]);
+          const dbPlace = result.rows._array[0];
+          const place = new Place(
+            dbPlace.title,
+            dbPlace.imageUri,
+            {
+              address: dbPlace.address,
+              lat: dbPlace.lat,
+              lng: dbPlace.lng,
+            },
+            dbPlace.id
+          );
+          resolve(place);
         },
         (_, error) => {
           reject(error);
